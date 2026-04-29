@@ -34,18 +34,23 @@ You can install this plugin locally for testing by either:
    # Assumes this template is cloned to .hermes/plugins/ inside a larger project
    ```
 
-## Managing the Plugin
+## Managing Plugins
 
-By default, installed plugins are **disabled**. You need to explicitly enable it:
+Once you publish your plugin as a Git repository, users can install and manage it using the Hermes CLI:
 
 ```bash
-hermes plugins enable example-plugin
+hermes plugins                                # unified interactive UI
+hermes plugins list                           # table: enabled / disabled / not enabled
+hermes plugins install user/repo              # install from Git, then prompt Enable? [y/N]
+hermes plugins install user/repo --enable     # install AND enable (no prompt)
+hermes plugins install user/repo --no-enable  # install but leave disabled (no prompt)
+hermes plugins update my-plugin               # pull latest
+hermes plugins remove my-plugin               # uninstall
+hermes plugins enable my-plugin               # add to allow-list
+hermes plugins disable my-plugin              # remove from allow-list + add to disabled
 ```
 
-To see the status of all installed plugins:
-```bash
-hermes plugins list
-```
+By default, newly installed plugins are disabled. You must explicitly enable them using the UI or the `enable` command.
 
 ## Creating Skills
 
